@@ -1,4 +1,6 @@
-const API = "http://localhost:3001/equipo";
+import { CONFIG } from "../config";
+
+const API = CONFIG.LOCAL_API;
 
 export const obtenerEquipo = async () => {
     const respuesta = await fetch(API);
@@ -14,9 +16,9 @@ export const agregarAlEquipo = async (pokemon) => {
     const respuesta = await fetch(API, {
         method: "POST",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
         },
-        body: JSON.stringify(pokemon)
+        body: JSON.stringify(pokemon),
     });
 
     if (!respuesta.ok) {
@@ -27,16 +29,13 @@ export const agregarAlEquipo = async (pokemon) => {
 };
 
 export const actualizarPokemon = async (id, cambios) => {
-    const respuesta = await fetch(
-        `${API}/${id}`,
-        {
-            method: "PATCH",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(cambios)
-        }
-    );
+    const respuesta = await fetch(`${API}/${id}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(cambios),
+    });
 
     if (!respuesta.ok) {
         throw new Error("No se pudo actualizar");
@@ -44,17 +43,22 @@ export const actualizarPokemon = async (id, cambios) => {
 
     return await respuesta.json();
 };
+
 export const eliminarPokemon = async (id) => {
-    const respuesta = await fetch(
-        `${API}/${id}`,
-        {
-            method: "DELETE"
-        }
-    );
+    const respuesta = await fetch(`${API}/${id}`, {
+        method: "DELETE",
+    });
 
     if (!respuesta.ok) {
-        throw new Error(
-            "No se pudo eliminar el Pokémon"
-        );
+        throw new Error("No se pudo eliminar el Pokémon");
+    }
+};
+
+export const verificarExistencia = async (nombre) => {
+    try {
+        const equipo = await obtenerEquipo();
+        return equipo.some(p => p.nombre.toLowerCase() === nombre.toLowerCase());
+    } catch (error) {
+        return false;
     }
 };

@@ -4,16 +4,29 @@
       "nombre": "pikachu",
       "imagen": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png",
       "nivel": 1,
-      "favorito": false,
-      "id": "mVNwi2bMdzk"
+      "favorito": true,
+      "id": 1
     },
     {
-      "nombre": "charizard",
-      "imagen": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
+      "nombre": "butterfree",
+      "imagen": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/12.png",
       "nivel": 1,
       "favorito": false,
-      "id": "id7Ojnk5CdU"
+      "id": 2
+    },
+    {
+      "nombre": "snorlax",
+      "imagen": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/143.png",
+      "nivel": 1,
+      "favorito": false,
+      "id": 3
+    },
+    {
+      "nombre": "mewtwo",
+      "imagen": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/150.png",
+      "nivel": 1,
+      "favorito": false,
+      "id": 4
     }
-  ],
-  "$schema": "./node_modules/json-server/schema.json"
+  ]
 }
